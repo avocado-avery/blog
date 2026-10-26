@@ -1,0 +1,123 @@
+---
+---
+
+@use 'abstracts/variables' with (
+  $theme: '{{ site.theme_mode }}'
+);
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+
+/*
+  Palette taken from the avatar (assets/img/avatar.png):
+    #0e1116  background    #eff2f5  "ah"
+    #6b7685  ":~" slate    #a3d55c  "#" green
+*/
+
+@mixin logo-dark {
+  --main-bg: #0e1116;
+  --main-border-color: #1f242c;
+  --text-color: #c3c9d1;
+  --text-muted-color: #6b7685;
+  --text-muted-highlight-color: #9aa3ae;
+  --heading-color: #eff2f5;
+  --label-color: #9aa3ae;
+  --blockquote-border-color: #a3d55c;
+  --link-color: #a3d55c;
+  --link-underline-color: #5f7d36;
+  --button-bg: #161b22;
+  --btn-border-color: #2a313b;
+  --card-bg: #131820;
+  --card-header-bg: #1a2029;
+  --card-hover-bg: #1f2630;
+  --menu-bg: #131820;
+
+  --site-title-color: #eff2f5;
+  --site-subtitle-color: #6b7685;
+  --sidebar-bg: #0b0e12;
+  --sidebar-border-color: #1a1f26;
+  --sidebar-muted-color: #6b7685;
+  --sidebar-active-color: #a3d55c;
+  --sidebar-hover-bg: #161b22;
+  --sidebar-btn-bg: #161b22;
+  --sidebar-btn-color: #6b7685;
+  --avatar-border-color: #a3d55c;
+
+  --topbar-bg: rgb(14 17 22 / 70%);
+  --search-border-color: #2a313b;
+  --input-focus-border-color: #a3d55c;
+
+  --toc-highlight: #a3d55c;
+  --tag-border: #2a313b;
+  --tag-hover: #1f2a17;
+  --tb-odd-bg: #131820;
+  --tb-even-bg: #0e1116;
+  --timeline-node-bg: #a3d55c;
+  --timeline-color: #2a313b;
+  --checkbox-checked-color: #a3d55c;
+
+  --highlight-bg-color: #0a0d11;
+  --inline-code-bg: rgb(163 213 92 / 8%);
+  --highlighter-rouge-color: #a3d55c;
+  --language-border-color: #1f242c;
+}
+
+@mixin logo-light {
+  /* the logo green is too bright on white, so use a darker shade of it */
+  --link-color: #4f7a1c;
+  --link-underline-color: #a3d55c;
+  --blockquote-border-color: #a3d55c;
+  --toc-highlight: #4f7a1c;
+  --sidebar-active-color: #4f7a1c;
+  --site-title-color: #0e1116;
+  --avatar-border-color: #a3d55c;
+  --input-focus-border-color: #a3d55c;
+  --timeline-node-bg: #4f7a1c;
+  --checkbox-checked-color: #4f7a1c;
+  --highlighter-rouge-color: #3f6216;
+}
+
+:root[data-bs-theme='dark'] {
+  @include logo-dark;
+}
+
+:root[data-bs-theme='light'] {
+  @include logo-light;
+}
+
+:root:not([data-bs-theme]) {
+  @media (prefers-color-scheme: dark) {
+    @include logo-dark;
+  }
+
+  @media (prefers-color-scheme: light) {
+    @include logo-light;
+  }
+}
+
+/* terminal-style font for the site title, like the "ah:~#" in the logo */
+#sidebar .site-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+#sidebar .site-title::after {
+  content: ':~#';
+  color: var(--link-color);
+  margin-left: 0.1em;
+}
+
+code,
+kbd,
+pre {
+  font-family: 'JetBrains Mono', monospace;
+}
