@@ -3,7 +3,7 @@ title: "Teams Vishing to In-Memory Python RAT"
 date: 2026-09-01 14:30:00 -0400
 categories: [Malware Analysis, Incident Response]
 image:
-  path: banner.png                   
+  path: banner.png
 tags: [vishing, malware analysis, incident response]
 description: >-
   A real-world intrusion attempt that started with a Microsoft Teams call from "IT support" and ended with an encrypted, in-memory Python RAT. Full kill chain, C2 infrastructure, and IoCs.
