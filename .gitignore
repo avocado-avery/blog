@@ -30,3 +30,8 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# AI Files
+CLAUDE.md
+AGENTS.md
+COPILOT.md
